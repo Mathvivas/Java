@@ -1,0 +1,14 @@
+public class Veiculo {
+	private String modelo;
+	private String marca;
+}
+
+
+public class Carro extends Veiculo {
+	private int quantidadeDePortas;
+}
+
+
+public class Motocicleta extends Veiculo {
+	private String cilindradas;
+}
