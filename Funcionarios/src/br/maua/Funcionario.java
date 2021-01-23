@@ -1,4 +1,4 @@
 package br.maua;
 
-public class Funcionario {
+public abstract class Funcionario {
 }
