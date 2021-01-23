@@ -96,6 +96,7 @@ classe como uma variável comum, ou seja, a variável criada será a mesma em to
 seu conteúdo é modificado numa das instâncias, a modificação ocorre em todas as demais. E nas declarações
 de metódos ajudam no acesso direto à classee, portanto não é necessário instanciar um objeto para acessar
 o método.
+O método static pertence a classe e não a instância.
 
 ##Final
 
