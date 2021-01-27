@@ -9,14 +9,14 @@ public class Main {
 
         Solution solution = new Solution();
 
-        solution.solution(arr);
-        solution.solution(arr2);
-        solution.solution(arr3);
+        System.out.println(solution.solution(arr));
+        System.out.println(solution.solution(arr2));
+        System.out.println(solution.solution(arr3));
 
         Solution2 solution2 = new Solution2();
 
-        solution2.Solution2(arr);
-        solution2.Solution2(arr2);
-        solution2.Solution2(arr3);
+        System.out.println("\n" + solution2.Solution2(arr));
+        System.out.println(solution2.Solution2(arr2));
+        System.out.println(solution2.Solution2(arr3));
     }
 }

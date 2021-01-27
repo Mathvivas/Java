@@ -20,6 +20,6 @@ public class Solution {
                 return i;
             }
         }
-        return n;
+        return (n + 1);
     }
 }
