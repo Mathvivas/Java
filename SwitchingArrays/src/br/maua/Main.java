@@ -21,35 +21,17 @@ Another example: A= [7,-5,-5,-5,7,-1,7], the switching sub-arrays are [7,-1,7] a
 public class Main {
 
     public static void main(String[] args) {
+        int[] arr = {3, 7, 3, 7, 2, 1, 2};
+        int[] arr2 = {2, 4, 2, 4};
+        int[] arr3 = {5, 5, 5, 5, 5};
+        int[] arr4 = {1, 2, 3, 4, 5};
+
+        Solve solve = new Solve();
+
+        System.out.println(solve.solve(arr));
+        System.out.println("\n" + solve.solve(arr2));
+        System.out.println("\n" + solve.solve(arr3));
+        System.out.println("\n" + solve.solve(arr4));
 
     }
-
-    public class Solve {
-        public int Solve(int[] arr) {
-            if ( arr.length == 1 ) return 1;
-
-            int even = arr[0];
-            int odd = arr[1];
-            int start = 0;
-            int maxLen = 0;
-
-            for ( int i = 2; i < arr.length; ++i ) {
-
-                if ( (i % 2 == 0 && arr[i] != even) || (i % 2 == 1 && arr[i] != odd) ) {
-                    maxLen = Math.max(maxLen, i - start);
-                    start = i - 1;
-                    if ( i % 2 == 0 ) {
-                        even = arr[i];
-                        odd = arr[i - 1];
-                    } else {
-                        even = arr[i - 1];
-                        odd = arr[i];
-                    }
-                }
-            }
-
-            return Math.max(maxLen, arr.length - start);
-        }
-    }
-
 }
