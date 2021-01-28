@@ -21,5 +21,17 @@ public class SetExample {
         union.addAll(set2);
         System.out.println("Union of set1 and set2 is: ");
         System.out.println(union);
+
+        // Finding Intersection of set1 and set2
+        Set<Integer> intersection = new HashSet<Integer>(set1);
+        intersection.retainAll(set2);       // Retêm os valores em comum
+        System.out.println("\nIntersection of set1 and set2 is: ");
+        System.out.println(intersection);
+
+        // Finding Difference os set1 and set2
+        Set<Integer> difference = new HashSet<Integer>(set1);
+        difference.removeAll(set2);         // Remove o valores do set2 que estão em set1
+        System.out.println("\nDifference of set1 and set2 is: ");
+        System.out.println(difference);
     }
 }
