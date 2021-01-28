@@ -7,6 +7,8 @@ public class Solution {
 
     public int solution(int[] arr) {
         int n = arr.length;
+        // Set interface extends the Collection interface. An unordered collection or
+        // list in which duplicates are not allowed.
         Set<Integer> set = new HashSet<>();
 
         for ( int item : arr ) {
