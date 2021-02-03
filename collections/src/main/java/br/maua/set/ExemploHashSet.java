@@ -8,6 +8,7 @@ public class ExemploHashSet {
 
     public static void main(String[] args) {
         Set<Double> notasAlunos = new HashSet<>();
+        // Não permite ordenação
 
         notasAlunos.add(5.8);
         notasAlunos.add(9.3);

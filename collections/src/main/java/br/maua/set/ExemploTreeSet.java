@@ -7,6 +7,8 @@ public class ExemploTreeSet {
 
     public static void main(String[] args) {
         TreeSet<String> treeCapitais = new TreeSet<>();
+        // TreeSet é performático para leitura, e mais lento para modificação pois
+        // tem a necessidade de reordenar após cada alteração.
 
         // Monta a árvore com as capitais
         treeCapitais.add("Porto Alegre");
