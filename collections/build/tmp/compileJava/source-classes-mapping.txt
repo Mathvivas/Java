@@ -6,3 +6,5 @@ br/maua/queue/ExemploLinkedList.java
  br.maua.queue.ExemploLinkedList
 br/maua/set/ExemploHashSet.java
  br.maua.set.ExemploHashSet
+br/maua/set/ExemploLinkedHashSet.java
+ br.maua.set.ExemploLinkedHashSet
