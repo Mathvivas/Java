@@ -8,3 +8,5 @@ br/maua/set/ExemploHashSet.java
  br.maua.set.ExemploHashSet
 br/maua/set/ExemploLinkedHashSet.java
  br.maua.set.ExemploLinkedHashSet
+br/maua/set/ExemploTreeSet.java
+ br.maua.set.ExemploTreeSet
