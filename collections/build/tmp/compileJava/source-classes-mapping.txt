@@ -1,4 +1,0 @@
-br/maua/list/ExemploList.java
- br.maua.list.ExemploList
-br/maua/list/ExemploVector.java
- br.maua.list.ExemploVector
