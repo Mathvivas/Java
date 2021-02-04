@@ -4,9 +4,15 @@ br/maua/list/ExemploList.java
  br.maua.list.ExemploList
 br/maua/queue/ExemploLinkedList.java
  br.maua.queue.ExemploLinkedList
-br/maua/set/ExemploHashSet.java
- br.maua.set.ExemploHashSet
 br/maua/set/ExemploLinkedHashSet.java
  br.maua.set.ExemploLinkedHashSet
+br/maua/set/ExemploHashSet.java
+ br.maua.set.ExemploHashSet
+br/maua/map/ExemploTreeMap.java
+ br.maua.map.ExemploTreeMap
 br/maua/set/ExemploTreeSet.java
  br.maua.set.ExemploTreeSet
+br/maua/map/ExemploHashTable.java
+ br.maua.map.ExemploHashTable
+br/maua/map/ExemploHashMap.java
+ br.maua.map.ExemploHashMap
