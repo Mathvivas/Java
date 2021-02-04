@@ -16,3 +16,9 @@ br/maua/map/ExemploHashMap.java
  br.maua.map.ExemploHashMap
 br/maua/map/ExemploHashTable.java
  br.maua.map.ExemploHashTable
+br/maua/comparators/EstudanteOrdemIdadeReversaComparator.java
+ br.maua.comparators.EstudanteOrdemIdadeReversaComparator
+br/maua/comparators/Estudante.java
+ br.maua.comparators.Estudante
+br/maua/comparators/ComparatorsExampleList.java
+ br.maua.comparators.ComparatorsExampleList
