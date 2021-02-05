@@ -24,7 +24,9 @@ br/maua/comparators/ComparatorsExampleList.java
  br.maua.comparators.ComparatorsExampleList
 br/maua/optionals/ExemploOptionalPrimitivos.java
  br.maua.optionals.ExemploOptionalPrimitivos
-br/maua/optionals/ExemploOptionalEstados.java
- br.maua.optionals.ExemploOptionalEstados
 br/maua/optionals/ExemploOptional.java
  br.maua.optionals.ExemploOptional
+br/maua/optionals/ExemploOptionalEstados.java
+ br.maua.optionals.ExemploOptionalEstados
+br/maua/stream/ExemploStreamAPI.java
+ br.maua.stream.ExemploStreamAPI
