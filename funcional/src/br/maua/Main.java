@@ -7,6 +7,10 @@ public class Main {
     public static void main(String[] args) {
 	    int[] valores = {1, 2, 3, 4};
 
+        /*
+            Funcional:
+            Declaramos o que desejamos, sem explicitar como será feito.
+         */
         Arrays.stream(valores)
                 .filter(valor -> valor % 2 == 0)
                 .map(valor -> valor * 2)
@@ -14,6 +18,7 @@ public class Main {
 
         System.out.println("\nOutro método\n");
 
+        // Imperativo
         for ( int i = 0; i < valores.length; i++ ) {
             int val = 0;
 
