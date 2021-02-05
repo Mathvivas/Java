@@ -7,6 +7,7 @@ public class ExemploOptionalEstados {
     public static void main(String[] args) {
                                         // Optional.of requer um valor não nulo
         Optional<String> optionalString = Optional.of("Valor presente");
+                                        // Método "of" não existe com tipo int (neste caso)
 
         System.out.println("Valor opcional que está presente");
         optionalString.ifPresentOrElse(System.out::println, () -> System.out.println("não está presente"));
