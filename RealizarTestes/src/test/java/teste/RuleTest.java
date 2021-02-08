@@ -13,11 +13,11 @@ import static org.junit.Assert.assertTrue;
 
 public class RuleTest {
 
-    @Rule
+    @Rule       // Garante que a pasta será criada antes do test
     public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Test
-    void shouldCreateNewFileInTemporaryFolder() throws IOException {
+    public void shouldCreateNewFileInTemporaryFolder() throws IOException {
         File created = tempFolder.newFile("file.txt");
 
         assertTrue(created.isFile());       // Verifica se o arquivo foi criado
