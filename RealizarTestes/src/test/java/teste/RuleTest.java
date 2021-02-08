@@ -1,6 +1,6 @@
 package teste;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 
