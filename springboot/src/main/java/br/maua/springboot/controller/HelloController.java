@@ -10,4 +10,12 @@ public class HelloController {
     public String helloMessage() {
         return "Hello, Digital Innovation One!";
     }
+
+    /*
+        sudo apt-get update
+        sudo apt-get -y install maven
+        Para executar essa mensagem no Browser:
+        Terminal --> mvn spring-boot:run
+        Browser --> localhost:8080
+     */
 }
