@@ -2,6 +2,7 @@ package br.maua.springbootDB.dao;
 
 import br.maua.springbootDB.model.Person;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface PersonDAO {
@@ -12,4 +13,6 @@ public interface PersonDAO {
         UUID id = UUID.randomUUID();
         return insertPerson(id, person);
     }
+
+    List<Person> selectAllPeople();
 }
