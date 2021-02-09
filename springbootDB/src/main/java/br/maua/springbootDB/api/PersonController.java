@@ -24,7 +24,7 @@ public class PersonController {
         personService.addPerson(person);
     }
 
-    @GetMapping     // Método HTTP GET -> Busca
+    @GetMapping     // Método HTTP GET
     public List<Person> getAllPeople() {
         return personService.getAllPeople();
     }
@@ -33,5 +33,15 @@ public class PersonController {
     public Person getPersonById(@PathVariable("id") UUID id) {
         return personService.getPersonById(id)
                 .orElse(null);
+    }
+
+    @DeleteMapping(path = "{id}")   // Método HTTP DELETE
+    public void deletePersonById(@PathVariable("id") UUID id) {
+        personService.deletePerson(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updatePerson(@PathVariable("id") UUID id, @RequestBody Person personToUpdate) {
+        personService.updatePerson(id, personToUpdate);
     }
 }
