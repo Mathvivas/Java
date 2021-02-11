@@ -3,6 +3,8 @@ package br.maua;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    Atividade1 atividade1 = new Atividade1();
+
+	    atividade1.run();
     }
 }
