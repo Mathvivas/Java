@@ -7,7 +7,9 @@ public abstract class Transporte {
         this.carga = carga;
     }
 
-    public double calculaFrete() {
-        return carga.getValor();
+    public double calculaFrete(double fretePeso, double freteValor) {
+        return freteValor * carga.getValor() + fretePeso * carga.getPeso();
     }
+
+    public abstract double calculaFrete();
 }
