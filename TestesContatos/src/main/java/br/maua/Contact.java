@@ -19,6 +19,10 @@ public class Contact {
         return lastName;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
     public void validateFirstName() {
         if ( this.firstName.isBlank() )
             throw new RuntimeException("First name cannot be null or empty!");
