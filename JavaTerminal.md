@@ -15,3 +15,7 @@ java nomeDoPacote.nomeDaClasse
 
 javac -cp caminhoDiretorio nomeDoPacote/nomeDaClasse.java
 java -cp caminhoDiretorio nomeDoPacote.nomeDaClasse
+
+- Quando há mais de um arquivo no mesmo pacote: 
+
+    javac nomeDoPacote/*.java
