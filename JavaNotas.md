@@ -57,6 +57,19 @@ double --> 64 bits
 
 __________
 
+## Contas
+
+- Toda conta devolve no mínimo um int.
+
+```
+byte b1 = 2;
+byte b2 = 5;
+byte b3 = b1 + b2;
+// Causa erro, não compila
+// Correção: int b3 = b1 + b2;
+```
+__________
+
 
 ## Public
 
