@@ -7,6 +7,7 @@
  ```java
 Objeto a = new Objeto();
 a.valor = 5;
+// a não é um objeto, a referencia um objeto
 
 Objeto b = new Objeto();
 b.valor = 5;
@@ -36,4 +37,28 @@ Class A {
         // 16 + 16 + 16 = 48
     }
 }
+  ```
+
+<br>
+
+ ```java
+for ( int i = 0; i < 10; i++ ) {
+    Carro c = new Carro();
+}
+/*
+    Criando 10 carros dentro do for
+    A variável c é local, só existe dentro do for
+    10 carros que não serão utilizados
+*/
+
+Carro c2;
+for ( int i = 0; i < 10; i++ ) {
+    c2 = new Carro();
+}
+
+/*
+    Variável c2 existe fora do for
+    c2 referencia um Carro diferente a cada iteração
+    Somente o último Carro será utilizado
+*/
   ```
