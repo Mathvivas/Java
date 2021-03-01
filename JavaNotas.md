@@ -147,3 +147,25 @@ __________
 ## Tipagem Dinâmica
 
 - Esta verificação é feita em tempo de execução.
+
+_________
+
+## Construtor
+
+```java 
+public class Livro {
+    public Livro() {
+        this(234);  // Chama o construtor de int
+        System.out.println("Sem argumentos");
+    }
+
+    public Livro(String... s) { // zero ou mais argumentos
+        this();  // Chama o construtor sem argumetos
+        System.out.println("Strings");
+    }
+
+    public Livro(int i) {
+        System.out.println("Int");
+    }
+}
+```
