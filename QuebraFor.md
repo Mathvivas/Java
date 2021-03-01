@@ -21,3 +21,34 @@ externo: for ( int i = 1; i < 10; i++ ) {
     }
 }
 ```
+
+<br>
+
+<br>
+
+# Switch
+
+```java
+for ( int i = 0; i < 4; i++ ) {
+    switch (i) {
+        case 0:
+        case 1:
+            System.out.println("Caso " + i);
+            break;
+        case 2:
+            System.out.println("Legal, " + i);
+            continue;
+        case 3:
+            System.out.println("Cheguei no 3");
+            break;
+        default:
+            System.out.println("Estranho...");
+            break;
+    }
+    System.out.println("Fora do switch");
+}
+```
+
+- Ao utilizar o break, quebra (sai) do switch e imprime o "Fora do switch";
+
+- Ao utilizar o continue, volta para o for, sem passar pelo que está depois.
