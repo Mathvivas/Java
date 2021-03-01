@@ -104,6 +104,24 @@ de metódos ajudam no acesso direto à classee, portanto não é necessário ins
 o método.
 O método static pertence a classe e não a instância.
 
+```java
+class Moto {
+    /* 
+        variável que pertence a classe, e não somente dos
+        objetos que serão criados
+    */
+    public static int totalDeMotos = 0;
+}
+
+public class TestaStatic {
+    public static void main(String[] args) {
+        Moto.totalDeMotos = 15; // Acessado diretamente pela Classe
+        System.out.println(Moto.totalDeMotos);
+    }
+}
+```
+- Não tem necessidade de utilizar: <s> Moto moto = new Moto() </s>
+
 ## Final
 
 - Quando é aplicado na classe, não permite estender, nos métodos impede que o mesmo seja sobrescrito 
