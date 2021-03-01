@@ -85,6 +85,10 @@ pertence.
 - Torna o membro acessível às classes do mesmo pacote ou através de herança, seus membros herdados não
 são acessíveis a outras classes fora do pacote em que foram declaradas.
 
+## Default
+
+- Precisa estar no mesmo pacote ou dentro da classe ou método.
+
 
 __________
 
