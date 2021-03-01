@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         String[] palavras;
         String frase;
+        int contador = 0;
         List<Character> utilizados = new ArrayList<Character>();
 
         Scanner scan = new Scanner(System.in);
@@ -20,13 +21,18 @@ public class Main {
 
         for ( String palavra : palavras ) {
             if (!utilizados.contains(palavra.charAt(0))) { // Se o array não contém a primeira letra da palavra
-                System.out.print(palavra.charAt(0) + " ");
+                System.out.print(palavra.charAt(0) + ". ");
                 utilizados.add(palavra.charAt(0));
+                contador++;
 
             } else {
-                System.out.print(palavra);
+                System.out.print(palavra + " ");
             }
         }
+
+        System.out.print("\nNúmero de abreviações: " + contador);
+
+
 
         //System.out.println(palavras[0].charAt(0));
     }
