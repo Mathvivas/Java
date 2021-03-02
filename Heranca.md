@@ -123,7 +123,7 @@ class FabricaDeHexaDroid extends FabricaDeVeiculo {
     // Veiculo fabrica() {
     //     return new HexaDroid();
     // }
-    
+
     // Retorno mais específico
     HexaDroid fabrica() {
         return new HexaDroid();
@@ -131,4 +131,35 @@ class FabricaDeHexaDroid extends FabricaDeVeiculo {
 }
 ```
 
-- Todo método de Interface é público.
+- Todo método de Interface é público;
+- Interface não pode possuir método com corpo.
+
+<br>
+
+- Se uma classe possui um método abstrato, quem herda essa classe, <strong> precisa </strong> implementar esse método.
+
+________
+
+```java
+
+interface Veiculo {
+    int getMarcha();
+    void liga();
+}
+
+abstract class Carro implements Veiculo {
+    public void liga()  {
+        System.out.println("ligado!");
+    }
+}
+
+class CarroConcreto extends Carro implements Veiculo {
+    public int getMarcha() {
+        return 1;
+    }
+}
+```
+
+- O código compila normalmente. Apesar de o método liga não estar declarado na classe CarroConcreto, a classe herda este método de Carro, logo, não é necessário reescrevê-lo (poderia reescrever se achasse necessário);
+
+- A declaração de que CarroConcreto implementa Veiculo também não era necessária, pois Carro já implementa Veiculo e CarroConcreto é um Carro.
