@@ -62,3 +62,34 @@ for ( int i = 0; i < 10; i++ ) {
     Somente o último Carro será utilizado
 */
   ```
+
+  ______
+
+```java
+class Prova {
+    int tempo;
+}
+
+public class TestaReferenciaEPrimitivo {
+    public static void main(String[] args) {
+        Prova prova = new Prova();
+        prova.tempo = 100;
+        teste(prova);
+        System.out.println(prova.tempo);    // 210
+
+        teste2(prova);
+        System.out.println(prova.tempo);    // 210
+    }
+
+    static void teste(Prova prova) {
+        // Não foi criado um novo Objeto
+        prova.tempo = 210;
+    }
+
+    static void teste2(Prova prova) {
+        // Criação de um novo Objeto
+        prova = new Prova();
+        prova.tempo = 520;
+    }
+}
+```
