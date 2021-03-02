@@ -12,7 +12,7 @@ public class Main {
         int contador = 0;
         Map<Character, String> utilizados = new HashMap<>();
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);      // Apenas uma linha de entrada
 
         System.out.println("Digite uma frase a ser abreviada: ");
         frase = scan.nextLine();
