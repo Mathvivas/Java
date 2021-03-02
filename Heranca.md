@@ -62,6 +62,73 @@ public class Filho2 extends Pai {
 }
 ```
 
-- Uma classe <strong> final </strong> pode herdar, mas não pode ser herdada.
+- Uma classe <strong> final </strong> pode herdar, mas não pode ser herdada;
 
-- Todos os métodos e atributos de uma classe mãe são herdados, independente das visibilidades.
+- Todos os métodos e atributos de uma classe mãe são herdados, independente das visibilidades;
+
+- Uma classe só pode herdar de <strong> uma </strong> outra classe;
+
+- A visibilidade do método da classe mãe precisa ser igual ou mais aberta;
+
+- O método da mãe não pode ser sobrescrito se for final;
+
+- Não pode haver ciclo na herança.
+
+______
+
+```java
+class Veiculo {
+    public void liga() {
+        System.out.println("O veículo está sendo ligado");
+    }
+}
+
+class Helicoptero extends Veiculo {
+    public void liga() {
+        System.out.println("Ligando o Helicóptero");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Helicoptero h1 = new Helicoptero();
+        h1.liga();  // Ligando o Helicóptero
+
+        Veiculo h2 = new Helicoptero();
+        h2.liga();  // Ligando o Helicóptero
+    }
+}
+```
+________
+
+```java
+abstract class Droid extends Veiculo {
+    public abstract void liga();
+}
+
+class HexaDroid extends Droid {
+    public void liga() {
+        System.out.println("HexaDroid");
+    }
+}
+
+class FabricaDeVeiculos {
+    Veiculo fabrica() {
+        return new Veiculo();
+    }
+}
+
+class FabricaDeHexaDroid extends FabricaDeVeiculo {
+    // Retorno igual
+    // Veiculo fabrica() {
+    //     return new HexaDroid();
+    // }
+    
+    // Retorno mais específico
+    HexaDroid fabrica() {
+        return new HexaDroid();
+    }
+}
+```
+
+- Todo método de Interface é público.
