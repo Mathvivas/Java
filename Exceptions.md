@@ -1,3 +1,49 @@
+## Try & Catch
+
+```java
+try {
+    // trecho que pode gerar um erro na execução.
+} catch (Throwable t) { // pegando todos os possíveis erros de 
+                        //execução.
+    // tratamento para o possível erro de execução.
+}
+
+try {
+    // trecho que pode gerar um erro na execução.
+} catch (Exception e) { // pegando todas as exceptions.
+    // tratamento para o possível erro de execução.
+}
+
+try {
+    System.out.println("Ok");
+} catch (RuntimeException e) { // pegando RuntimeException 
+                               // (unckecked).
+    // tratamento.
+}
+```
+
+_______
+
+## Finally
+
+- O bloco finally é sempre executado, tanto no sucesso quanto no fracasso por qualquer tipo de erro.
+
+```java
+void metodo(){
+    try {
+        abreConexao();
+        fazConsultas(); // Não precisa mais fechar a conexao 
+                        // aqui.
+    } catch(SQLException e) {
+        // tratamento
+    } finally {
+        fechaConexao(); // fechando a conexao no sucesso ou no
+                        // fracasso.
+    }
+}
+```
+_______
+
 ```java
 class Conta {
     double saldo = 100;
