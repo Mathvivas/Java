@@ -173,3 +173,34 @@ public class Livro {
     }
 }
 ```
+
+________
+
+## this e super
+
+```java
+class Mae {
+    int numero;
+
+    Mae() {}
+
+    Mae(String s) {
+        System.out.println("Mãe");
+    }
+}
+
+class Filha extends Mae {
+    String s;
+    int numero;
+    Filha(String s) {
+        super(s);
+        this.s = s;
+        super.int = 40;
+        this.int = 30;
+        System.out.println(s);
+    }
+}
+```
+
+- <strong> this.s </strong> refere-se à variável membro;
+- <strong> Somente s </strong> refere-se à variável local.
