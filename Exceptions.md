@@ -61,3 +61,23 @@ class TestaTrataException {
     }
 }
 ```
+
+## Tratando mais de uma Exception
+
+```java
+class TestaTrataException {
+    public static void metodo() {
+        try {
+            new Conta().saca(500);
+        } catch(NullPointerException ex) {
+            System.out.println("Tratei nullPointer");
+        } catch(SaldoInsuficienteException ex) {
+            System.out.println("Tratei saldo insuficiente");
+        }
+    }
+
+    public static void main(String args[]) {
+        metodo();
+    }
+}
+```
