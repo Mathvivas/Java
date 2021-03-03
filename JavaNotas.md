@@ -204,3 +204,21 @@ class Filha extends Mae {
 
 - <strong> this.s </strong> refere-se à variável membro;
 - <strong> Somente s </strong> refere-se à variável local.
+
+<br>
+
+- Contextos estáticos não possuem nem this nem super, uma vez que o código não é executado dentro de um objeto.
+
+```java
+class A {
+    int i = 5;
+}
+
+class Teste extends A {
+    int i = 10;
+    public static void main(String [] args) {
+        this.i = 5; // this? não compila. código estático
+        super.i = 10; // super? não compila. código estático
+    }
+}
+```
