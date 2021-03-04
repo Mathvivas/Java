@@ -108,6 +108,8 @@ class TestaTrataException {
 }
 ```
 
+_____________
+
 ## Tratando mais de uma Exception
 
 ```java
@@ -127,3 +129,28 @@ class TestaTrataException {
     }
 }
 ```
+
+_______________
+
+```java
+class A {
+    void m2() throws java.io.FileNotFoundException {
+        System.out.println("e");
+        new java.io.FileInputStream("a.txt");
+        System.out.println("f");
+    }
+    void m() throws java.io.IOException {
+        System.out.println("c");
+        m2();
+        System.out.println("d");
+    }
+    public static void main(String[] args) 
+                throws java.io.FileNotFoundException {
+        System.out.println("a");
+        new A().m();
+        System.out.println("b");
+    }
+}
+```
+
+- Não compila, pois a main deve tratar ou jogar o mesmo nível (ou maior) de Exceptions dos métodos que ela chamou.
