@@ -154,3 +154,33 @@ class A {
 ```
 
 - Não compila, pois a main deve tratar ou jogar o mesmo nível (ou maior) de Exceptions dos métodos que ela chamou.
+
+________
+
+```java
+class A {
+    void m2() throws java.io.FileNotFoundException {
+        System.out.println("e");
+        new java.io.FileInputStream("a.txt");
+        System.out.println("f");
+    }
+
+    void m() throws java.io.FileNotFoundException {
+        System.out.println("c");
+        try {
+            m2();
+        } catch(java.io.FileNotFoundException ex) {
+        }
+        System.out.println("d");
+    }
+
+    public static void main(String[] args) throws 
+    java.io.IOException {
+        System.out.println("a");
+        new A().m();
+        System.out.println("b");
+    }
+}
+```
+
+- Assim que a Exception é gerada, nada depois dela será impresso, até que o catch pegue, ou seja, "f" não será impresso.
