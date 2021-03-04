@@ -40,6 +40,16 @@
 - Representado por '\u';
 - '\u03A9' representa a letra omega.
 
+## Wrappers
+
+```java
+int i0 = Interger.parseInt("10", 10);
+int i1 = Interger.parseInt("11", 16);
+int i2 = Interger.parseInt("A", 16);
+long l = Long.parseLong("11", 2);
+String s = Integer.toString(123, 10);
+```
+
 ## Formatação
 
 - System.out.print não possui versão sem argumentos;
