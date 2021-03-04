@@ -42,6 +42,8 @@
 
 ## Formatação
 
+- System.out.print não possui versão sem argumentos;
+
 - System.out.format;
 - System.out.printf.
 
