@@ -43,11 +43,17 @@
 ## Wrappers
 
 ```java
+// Devolve Primitivo
 int i0 = Interger.parseInt("10", 10);
 int i1 = Interger.parseInt("11", 16);
 int i2 = Interger.parseInt("A", 16);
 long l = Long.parseLong("11", 2);
 String s = Integer.toString(123, 10);
+
+// Primitivo --> Wrapper
+Integer intWrapper = Integer.valueOf(1);
+// Wrapper --> Primitivo
+int intPrimitivo = intWrapper.intValue();
 ```
 
 ## Formatação
