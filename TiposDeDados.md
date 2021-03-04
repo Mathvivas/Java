@@ -39,3 +39,26 @@
 
 - Representado por '\u';
 - '\u03A9' representa a letra omega.
+
+## Formatação
+
+- System.out.format;
+- System.out.printf.
+
+```java
+System.out.format("String: %s %n Número: %d %n Número: %f", "oi", 45, 37.8);
+
+// n$ -> Seleciona qual será printado primeiro.
+System.out.format("%2$s, %1$s", "World", "Hello");
+// Hello, World
+System.out.format("%2$s, %2$s", "World", "Hello");
+// Hello, Hello
+
+// Número de casas
+System.out.format("%5d", 42);
+
+// Alinhamento na esquerda
+System.out.format("%-5d", 42);
+
+System.out.format("%.2f", 43.75);
+```
