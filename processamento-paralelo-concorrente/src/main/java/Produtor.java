@@ -4,7 +4,7 @@ import java.util.Random;
 public class Produtor implements Runnable {
 
     private List<Integer> items;
-    private int maximo = 10;
+    private int maximo = 1;
     private Random gerador = new Random();
 
     public Produtor(List<Integer> items) {
@@ -16,10 +16,17 @@ public class Produtor implements Runnable {
         System.out.println("Produtor: " + Thread.currentThread().getName());
         while ( true ) {
             synchronized (items) {
-                // Espera ocupada
-                while ( items.size() >= maximo );
+                while ( items.size() >= maximo ) {
+                    try {
+                        items.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
                 int item = gerador.nextInt(6) + 1;
+                System.out.printf("Item produzido (%s): %d\n", Thread.currentThread().getName(), item);
                 items.add(item);
+                items.notify();
             }
             try {
                 Thread.sleep(3000);

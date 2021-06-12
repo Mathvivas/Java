@@ -14,7 +14,12 @@ public class TesteProdutoConsumidor {
 
 //        new Thread(produtor).start();
 //        new Thread(consumidor).start();
-        pool.submit(produtor);
-        pool.submit(consumidor);
+//        pool.submit(produtor);
+//        pool.submit(consumidor);
+
+        for ( int i = 0; i < 50; i++ ) {
+            pool.submit(new Produtor(items));
+            pool.submit(new Consumidor(items));
+        }
     }
 }

@@ -14,13 +14,17 @@ public class Consumidor implements Runnable {
         System.out.println("Consumidor: " + Thread.currentThread().getName());
         while ( true ) {
             synchronized (items) {
-                // Espera ocupada
-                while ( items.isEmpty() );
-                int item = items.get(0);
-                System.out.println("Consumido: " + item);
-                total += item;
-                System.out.println("Total: " + total);
+                while ( items.isEmpty() ) {
+                    try {
+                        items.wait();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                total += items.get(0);
                 items.remove(0);
+                System.out.printf("Total (%s): %d\n", Thread.currentThread().getName(), total);
+                items.notify();
             }
             try {
                 Thread.sleep(3000);
