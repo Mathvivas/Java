@@ -3,9 +3,7 @@ package br.maua.classes;
 import br.maua.enums.Produto;
 import br.maua.enums.Regiao;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Esta classe permite realizar a validação do código
@@ -15,35 +13,49 @@ import java.util.List;
  */
 public class ValidadorDeCodigo {
 
-    public static final Integer TAMANHO_CODIGO = 15;
     public static final String VENDEDOR_INVALIDO = "584";
 
-    public void validar(String codigo) {
+    public void validar(List<String> codigoPacotes) {
 
-        String[] codigos = codigo.split("(?<=\\G.{3})");
+        Set<String> codigosInvalidos = new HashSet<>();
+        Set<String> codigosValidos = new HashSet<>();
 
-        Produto[] produtos;
-        produtos = (Produto[]) Arrays.stream(Produto.values()).toArray();
-        Regiao[] regioes;
-        regioes = (Regiao[]) Arrays.stream(Regiao.values()).toArray();
+        for (String codigoDeUmPacote : codigoPacotes) {
 
-        // Verificando o código do vendedor (código 584 é inválido)
-        if ( codigos[3].equals(VENDEDOR_INVALIDO) ) {
-            System.out.println("\nCódigo do Vendedor é Inválido!");
-        }
+            String[] codigoSeparado = codigoDeUmPacote.split("(?<=\\G.{3})");
 
-        if ( codigos[1].equals(Regiao.CENTROOESTE.getCodigo()) && codigos[0].equals(Produto.JOIAS.getCodigo()) ) {
-            System.out.println("\nNão é possível despachar pacotes contendo jóias vindo do Centro-Oeste!");
-        }
+            Produto[] produtos;
+            produtos = (Produto[]) Arrays.stream(Produto.values()).toArray();
 
-        // Checando se os Produtos possuem código diferente do permitido
-        List<String> produtosValidos = new ArrayList<>();
-        for (Produto prod : produtos) {
-            produtosValidos.add(prod.getCodigo());
-        }
+            // Verificando o código do vendedor (código 584 é inválido)
+            if (codigoSeparado[3].equals(VENDEDOR_INVALIDO)) {
+                System.out.println("\nCódigo do Vendedor é Inválido!");
+                codigosInvalidos.add(codigoDeUmPacote);
+                break;
+            }
+            // Verificando se existe jóias vindo do Centro-Oeste
+            else if (codigoSeparado[1].equals(Regiao.CENTROOESTE.getCodigo()) && codigoSeparado[0].equals(Produto.JOIAS.getCodigo())) {
+                System.out.println("\nNão é possível despachar pacotes contendo jóias vindo do Centro-Oeste!");
+                codigosInvalidos.add(codigoDeUmPacote);
+                break;
+            }
 
-        if ( !produtosValidos.contains(codigos[4]) ) {
-            System.out.println("\nProduto não permitido!");
+            // Checando se os Produtos possuem código diferente do permitido
+            List<String> produtosValidos = new ArrayList<>();
+            for (Produto prod : produtos) {
+                produtosValidos.add(prod.getCodigo());
+            }
+
+            if (!produtosValidos.contains(codigoSeparado[4])) {
+                System.out.println("\nProduto não permitido!");
+                codigosInvalidos.add(codigoDeUmPacote);
+                break;
+            }
+
+            // Caso o Código passe do Validador, ele é válido
+            codigosValidos.add(codigoDeUmPacote);
+            Sistema sistema = new Sistema();
+            sistema.rodar(produtos, codigoSeparado, codigosValidos, codigosInvalidos);
         }
     }
 }
