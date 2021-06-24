@@ -3,6 +3,12 @@ package br.maua.classes;
 import br.maua.enums.Produto;
 import br.maua.enums.Regiao;
 
+/**
+ * Esta classe permite imprimir o resultado encontrado
+ * através da análise do código de barras
+ *
+ * @author Matheus
+ */
 public class PadraoDeImpressao {
 
     public void imprimir(Regiao origem, Regiao destino, String codLoggi,

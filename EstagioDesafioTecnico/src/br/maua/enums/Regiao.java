@@ -1,5 +1,10 @@
 package br.maua.enums;
 
+/**
+ * Este enum define as regiões e seus códigos
+ *
+ * @author Matheus
+ */
 public enum Regiao {
 
     CENTROOESTE("111"),

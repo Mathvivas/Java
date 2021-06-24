@@ -1,5 +1,10 @@
 package br.maua.enums;
 
+/**
+ * Este enum define os produtos e seus códigos
+ *
+ * @author Matheus
+ */
 public enum Produto {
 
     JOIAS("000"),
