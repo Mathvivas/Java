@@ -20,5 +20,23 @@ public class Sistema {
         Regiao[] regioes;
         regioes = (Regiao[]) Arrays.stream(Regiao.values()).toArray();
 
+        for ( Regiao reg : regioes ) {
+            if ( reg.getCodigo().equals(codigos[0]) ) {
+                String origem = reg.getCodigo();
+
+            } else if ( reg.getCodigo().equals(codigos[1]) ) {
+                String destino = reg.getCodigo();
+            }
+        }
+
+        for ( Produto prod : produtos ) {
+            if ( prod.getCodigo().equals(codigos[4]) ) {
+                String tipoProduto = prod.getCodigo();
+            }
+        }
+
+        String codigo = String.join("", codigos);
+        PadraoDeImpressao padraoDeImpressao = new PadraoDeImpressao();
+//        padraoDeImpressao.imprimir();
     }
 }
