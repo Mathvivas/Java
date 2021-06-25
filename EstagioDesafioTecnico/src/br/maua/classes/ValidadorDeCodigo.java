@@ -14,7 +14,7 @@ import java.util.*;
 public class ValidadorDeCodigo {
 
     public static final String VENDEDOR_INVALIDO = "584";
-    PadraoDeImpressao padraoDeImpressao = new PadraoDeImpressao();
+    Listagem listagem = new Listagem();
     Map<String, Integer> vendedores = new HashMap<>();
     Sistema sistema = new Sistema();
 
@@ -52,8 +52,8 @@ public class ValidadorDeCodigo {
 
             identificarSulBrinquedo(codigoDeUmPacote, codigoSeparado);
 
-            padraoDeImpressao.adicionarNumeroDeCodigosPorVendedor(codigoSeparado, vendedores);
-            padraoDeImpressao.listarNumeroDeCodigosPorVendedor(vendedores);
+            listagem.adicionarNumeroDeCodigosPorVendedor(codigoSeparado, vendedores);
+            listagem.listarNumeroDeCodigosPorVendedor(vendedores);
 
             sistema.rodar(produtos, codigoSeparado);
         }
