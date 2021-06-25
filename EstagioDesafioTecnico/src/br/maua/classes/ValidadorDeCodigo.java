@@ -16,6 +16,7 @@ public class ValidadorDeCodigo {
     public static final String VENDEDOR_INVALIDO = "584";
     Listagem listagem = new Listagem();
     Map<String, Integer> vendedores = new HashMap<>();
+    Map<String, Set<String>> codDestino = new HashMap<>();
     Sistema sistema = new Sistema();
 
     public void validar(List<String> codigoPacotes) {
@@ -54,6 +55,9 @@ public class ValidadorDeCodigo {
 
             listagem.adicionarNumeroDeCodigosPorVendedor(codigoSeparado, vendedores);
             listagem.listarNumeroDeCodigosPorVendedor(vendedores);
+
+            listagem.adicionarCodigosPorDestino(codigoDeUmPacote, codigoSeparado, codDestino);
+            listagem.listarCodigosPorDestino(codDestino);
 
             sistema.rodar(produtos, codigoSeparado);
         }
