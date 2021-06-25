@@ -1,5 +1,11 @@
 package br.maua.classes;
 
+/**
+ * Esta classe tem como objetivo apresentar
+ * o menu de opções ao usuário.
+ *
+ * @author Matheus
+ */
 public class Menu {
 
     public void menu() {
