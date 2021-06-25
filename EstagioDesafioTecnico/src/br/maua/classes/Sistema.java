@@ -18,25 +18,28 @@ public class Sistema {
     public void rodar(Produto[] produtos, String[] codigos, Set<String> codigosValidos, Set<String> codigosInvalidos) {
 
         Regiao[] regioes;
-        regioes = (Regiao[]) Arrays.stream(Regiao.values()).toArray();
+        regioes = Arrays.stream(Regiao.values()).toArray(Regiao[]::new);
+
+        Regiao origem = null, destino = null;
+        Produto tipoProduto = null;
 
         for ( Regiao reg : regioes ) {
             if ( reg.getCodigo().equals(codigos[0]) ) {
-                String origem = reg.getCodigo();
+                origem = reg;
 
             } else if ( reg.getCodigo().equals(codigos[1]) ) {
-                String destino = reg.getCodigo();
+                destino = reg;
             }
         }
 
         for ( Produto prod : produtos ) {
             if ( prod.getCodigo().equals(codigos[4]) ) {
-                String tipoProduto = prod.getCodigo();
+                tipoProduto = prod;
             }
         }
 
         String codigo = String.join("", codigos);
         PadraoDeImpressao padraoDeImpressao = new PadraoDeImpressao();
-//        padraoDeImpressao.imprimir();
+        padraoDeImpressao.imprimir(codigo, origem, destino, codigos[2], codigos[3], tipoProduto);
     }
 }

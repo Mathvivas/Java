@@ -25,7 +25,7 @@ public class ValidadorDeCodigo {
             String[] codigoSeparado = codigoDeUmPacote.split("(?<=\\G.{3})");
 
             Produto[] produtos;
-            produtos = (Produto[]) Arrays.stream(Produto.values()).toArray();
+            produtos = Arrays.stream(Produto.values()).toArray(Produto[]::new);
 
             // Verificando o código do vendedor (código 584 é inválido)
             if (codigoSeparado[3].equals(VENDEDOR_INVALIDO)) {
