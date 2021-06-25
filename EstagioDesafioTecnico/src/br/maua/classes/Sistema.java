@@ -25,8 +25,8 @@ public class Sistema {
         for ( Regiao reg : regioes ) {
             if ( reg.getCodigo().equals(codigos[0]) ) {
                 origem = reg;
-
-            } else if ( reg.getCodigo().equals(codigos[1]) ) {
+            }
+            if ( reg.getCodigo().equals(codigos[1]) ) {
                 destino = reg;
             }
         }
