@@ -14,7 +14,6 @@ public class Listagem {
 
     public static Integer posVendedor = 3;
     public static Integer posDestino = 1;
-    Set<String> setCodigos = new HashSet<>();
 
     public void adicionarNumeroDeCodigosPorVendedor(String[] codigoSeparado, Map<String, Integer> vendedores) {
 
@@ -34,8 +33,15 @@ public class Listagem {
 
     public void adicionarCodigosPorDestino(String codigo, String[] codigoSeparado, Map<String, Set<String>> codDestino) {
 
-        setCodigos.add(codigo);
-        codDestino.put(codigoSeparado[posDestino], setCodigos);
+        if ( !codDestino.containsKey(codigoSeparado[posDestino]) ) {
+            Set<String> setCodigos = new HashSet<>();
+            setCodigos.add(codigo);
+            codDestino.put(codigoSeparado[posDestino], setCodigos);
+        } else {
+            Set<String> aux = codDestino.get(codigoSeparado[posDestino]);
+            aux.add(codigo);
+            codDestino.put(codigoSeparado[posDestino], aux);
+        }
     }
 
     public void listarCodigosPorDestino(Map<String, Set<String>> codDestino) {
@@ -43,10 +49,7 @@ public class Listagem {
         for ( String destino : codDestino.keySet() ) {
             System.out.println("\n-------------------------");
             System.out.println("Destino: " + destino);
-
-            for ( String codigoBarras : codDestino.get(destino) ) {
-                System.out.println("Código: " + codigoBarras);
-            }
+            System.out.println("Código(s): " + codDestino.get(destino).toString());
         }
     }
 }

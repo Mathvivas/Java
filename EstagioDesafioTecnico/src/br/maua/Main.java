@@ -42,6 +42,7 @@ public class Main {
                     if ( codigoPacotes.isEmpty() ) {
                         System.out.println("\nLista de Pacotes vazia!");
                     } else {
+                        System.out.println("\n\n\n\n\n");
                         ValidadorDeCodigo validadorDeCodigo = new ValidadorDeCodigo();
                         validadorDeCodigo.validar(codigoPacotes);
                     }
