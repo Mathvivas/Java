@@ -51,7 +51,7 @@ public class Main {
                     break;
             }
 
-        } while ( op.equals("1") );
+        } while ( !op.equals("0") );
     }
 }
 
