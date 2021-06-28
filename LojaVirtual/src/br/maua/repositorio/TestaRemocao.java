@@ -1,8 +1,8 @@
 package br.maua.repositorio;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class TestaRemocao {
 
@@ -11,8 +11,9 @@ public class TestaRemocao {
         ConnectionFactory factory = new ConnectionFactory();
         Connection connection = factory.recuperarConexao();
 
-        Statement stm = connection.createStatement();
-        stm.execute("DELETE FROM produto WHERE id = 3");
+        PreparedStatement stm = connection.prepareStatement("DELETE FROM produto WHERE id = ?");
+        stm.setInt(1, 3);
+        stm.execute();
 
         int linhasModificadas = stm.getUpdateCount();
         System.out.println("Quantidade de linhas modificadas: " + linhasModificadas);
