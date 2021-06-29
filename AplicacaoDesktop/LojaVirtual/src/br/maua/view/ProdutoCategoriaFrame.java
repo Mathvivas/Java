@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class ProdutoCategoriaFrame {
+public class ProdutoCategoriaFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class ProdutoCategoriaFrame {
         this.produtoController = new ProdutoController();
 
         labelNome = new JLabel("Nome do Produto");
-        labelDescricao = new JLabel("Descri��o do Produto");
+        labelDescricao = new JLabel("Descrição do Produto");
         labelCategoria = new JLabel("Categoria do Produto");
 
         labelNome.setBounds(10, 10, 240, 15);
@@ -81,7 +81,7 @@ public class ProdutoCategoriaFrame {
 
         modelo.addColumn("Identificador do Produto");
         modelo.addColumn("Nome do Produto");
-        modelo.addColumn("Descri��o do Produto");
+        modelo.addColumn("Descrição do Produto");
 
         preencherTabela();
 
@@ -158,7 +158,7 @@ public class ProdutoCategoriaFrame {
             Integer id = (Integer) objetoDaLinha;
             this.produtoController.deletar(id);
             modelo.removeRow(tabela.getSelectedRow());
-            JOptionPane.showMessageDialog(this, "Item exclu�do com sucesso!");
+            JOptionPane.showMessageDialog(this, "Item excluído com sucesso!");
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecionar o ID");
         }
@@ -188,7 +188,7 @@ public class ProdutoCategoriaFrame {
             JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
             this.limpar();
         } else {
-            JOptionPane.showMessageDialog(this, "Nome e Descri��o devem ser informados.");
+            JOptionPane.showMessageDialog(this, "Nome e Descrição devem ser informados.");
         }
     }
 
@@ -201,6 +201,4 @@ public class ProdutoCategoriaFrame {
         this.textoDescricao.setText("");
         this.comboCategoria.setSelectedIndex(0);
     }
-}
-
 }
