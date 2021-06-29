@@ -1,5 +1,6 @@
 package br.maua.dao;
 
+import br.maua.modelo.Categoria;
 import br.maua.modelo.Produto;
 
 import java.sql.*;
@@ -36,6 +37,28 @@ public class ProdutoDAO {
         String sql = "SELECT id, nome, descricao FROM produto";
 
         try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.execute();
+
+            try (ResultSet rst = pstm.getResultSet()) {
+                while ( rst.next() ) {
+                    Produto produto = new Produto(rst.getInt(1), rst.getString(2), rst.getString(3));
+
+                    produtos.add(produto);
+                }
+            }
+        }
+        return produtos;
+    }
+
+    public List<Produto> buscar(Categoria ct) throws SQLException {
+        List<Produto> produtos = new ArrayList<>();
+
+        System.out.println("Executando a Query de Buscar Produto por Categoria");
+
+        String sql = "SELECT id, nome, descricao FROM produto WHERE categoria_id = ?";
+
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setInt(1, ct.getId());
             pstm.execute();
 
             try (ResultSet rst = pstm.getResultSet()) {
