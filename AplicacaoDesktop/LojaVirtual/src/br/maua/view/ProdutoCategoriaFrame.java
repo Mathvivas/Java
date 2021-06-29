@@ -54,7 +54,7 @@ public class ProdutoCategoriaFrame extends JFrame {
         comboCategoria = new JComboBox<Categoria>();
 
         comboCategoria.addItem(new Categoria(0, "Selecione"));
-        java.util.List<Categoria> categorias = this.listarCategoria();
+        List<Categoria> categorias = this.listarCategoria();
         for (Categoria categoria : categorias) {
             comboCategoria.addItem(categoria);
         }
@@ -165,7 +165,7 @@ public class ProdutoCategoriaFrame extends JFrame {
     }
 
     private void preencherTabela() {
-        java.util.List<Produto> produtos = listarProduto();
+        List<Produto> produtos = listarProduto();
         try {
             for (Produto produto : produtos) {
                 modelo.addRow(new Object[] { produto.getId(), produto.getNome(), produto.getDescricao() });
@@ -175,7 +175,7 @@ public class ProdutoCategoriaFrame extends JFrame {
         }
     }
 
-    private java.util.List<Categoria> listarCategoria() {
+    private List<Categoria> listarCategoria() {
         return this.categoriaController.listar();
     }
 

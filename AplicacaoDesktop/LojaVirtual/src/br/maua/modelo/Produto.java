@@ -8,6 +8,7 @@ public class Produto {
     private Integer categoriaId;
 
     public Produto(String nome, String descricao) {
+        super();
         this.nome = nome;
         this.descricao = descricao;
     }

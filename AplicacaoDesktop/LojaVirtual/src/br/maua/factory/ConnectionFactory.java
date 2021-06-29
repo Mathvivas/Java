@@ -16,12 +16,16 @@ public class ConnectionFactory {
         comboPooledDataSource.setUser("debian-sys-maint");
         comboPooledDataSource.setPassword("7TzgRWTPbHI0bKOU");
 
-        comboPooledDataSource.setMaxPoolSize(15);
+//        comboPooledDataSource.setMaxPoolSize(15);
 
         this.dataSource = comboPooledDataSource;
     }
 
     public Connection recuperarConexao() throws SQLException {
-        return this.dataSource.getConnection();
+        try {
+            return this.dataSource.getConnection();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

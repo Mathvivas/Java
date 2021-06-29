@@ -1,29 +1,40 @@
 package br.maua.controller;
 
+import br.maua.dao.ProdutoDAO;
+import br.maua.factory.ConnectionFactory;
 import br.maua.modelo.Produto;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ProdutoController {
 
+    private ProdutoDAO produtoDAO;
+
+    public ProdutoController() {
+        Connection connection = null;
+        try {
+            connection = new ConnectionFactory().recuperarConexao();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        this.produtoDAO = new ProdutoDAO(connection);
+    }
+
     public void deletar(Integer id) {
-        System.out.println("Deletando produto");
+        this.produtoDAO.deletar(id);
     }
 
     public void salvar(Produto produto) {
-        System.out.println("Salvando produto");
+        this.produtoDAO.salvar(produto);
     }
 
     public List<Produto> listar() {
-        List<Produto> produtos =
-                new ArrayList<Produto>();
-        produtos.add(new Produto("Nome do Produto de teste"
-                , "Descri��o do produto de teste"));
-        return produtos;
+        return this.produtoDAO.listar();
     }
 
     public void alterar(String nome, String descricao, Integer id) {
-        System.out.println("Alterando produto");
+        this.produtoDAO.alterar(nome, descricao, id);
     }
 }
