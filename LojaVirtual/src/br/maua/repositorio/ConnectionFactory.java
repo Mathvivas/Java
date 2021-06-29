@@ -1,15 +1,27 @@
 package br.maua.repositorio;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
 
-    public Connection recuperarConexao() throws SQLException {
+    public DataSource dataSource;
 
-        return DriverManager
-                .getConnection("jdbc:mysql://localhost/loja_virtual?useTimezone=true&serverTimezone=UTC",
-                        "debian-sys-maint", "7TzgRWTPbHI0bKOU");
+    public ConnectionFactory() {
+        ComboPooledDataSource comboPooledDataSource = new ComboPooledDataSource();
+        comboPooledDataSource.setJdbcUrl("jdbc:mysql://localhost/loja_virtual?useTimezone=true&serverTimezone=UTC");
+        comboPooledDataSource.setUser("debian-sys-maint");
+        comboPooledDataSource.setPassword("7TzgRWTPbHI0bKOU");
+
+        comboPooledDataSource.setMaxPoolSize(15);
+
+        this.dataSource = comboPooledDataSource;
+    }
+
+    public Connection recuperarConexao() throws SQLException {
+        return this.dataSource.getConnection();
     }
 }
