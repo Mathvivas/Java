@@ -1,5 +1,7 @@
 package br.maua.repositorio;
 
+import br.maua.factory.ConnectionFactory;
+
 import java.sql.SQLException;
 
 public class TestaPoolDeConexoes {

@@ -1,6 +1,7 @@
 package br.maua.repositorio;
 
 import br.maua.dao.ProdutoDAO;
+import br.maua.factory.ConnectionFactory;
 import br.maua.modelo.Produto;
 
 import java.sql.*;

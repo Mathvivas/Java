@@ -1,6 +1,7 @@
 package br.maua.repositorio;
 
 import br.maua.dao.CategoriaDAO;
+import br.maua.factory.ConnectionFactory;
 import br.maua.modelo.Categoria;
 import br.maua.modelo.Produto;
 

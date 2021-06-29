@@ -1,4 +1,4 @@
-package br.maua.repositorio;
+package br.maua.factory;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

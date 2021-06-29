@@ -1,5 +1,7 @@
 package br.maua.repositorio;
 
+import br.maua.factory.ConnectionFactory;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
