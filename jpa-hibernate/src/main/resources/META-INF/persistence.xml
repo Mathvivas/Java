@@ -9,6 +9,7 @@
         </description>
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>org.halyph.sessiondemo.Event</class>
+<!--        <class>br.maua.loja.modelo.Produto</class> Hibernate não precisa mapear as classes -->
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
