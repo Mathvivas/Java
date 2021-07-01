@@ -8,11 +8,25 @@ import br.maua.loja.util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
 
+        cadastrarProduto();
+
+        EntityManager em = JPAUtil.getEntityManager();
+        ProdutoDAO produtoDAO = new ProdutoDAO(em);
+
+        Produto p = produtoDAO.buscarPorId(1L);
+        System.out.println(p.getPreco());
+
+        List<Produto> todos = produtoDAO.buscarTodos();
+        todos.forEach(prod -> System.out.println(prod.getNome()));
+    }
+
+    private static void cadastrarProduto() {
         Produto celular = new Produto();
 
         celular.setNome("Xiaomi Redmi");

@@ -16,4 +16,13 @@ public class CategoriaDAO {
     public void cadastrar(Categoria categoria) {
         this.em.persist(categoria);
     }
+
+    public void atualizar(Categoria categoria) {
+        this.em.merge(categoria);       // Força a categoria a estar no modo Managed
+    }
+
+    public void remover(Categoria categoria) {
+        categoria = em.merge(categoria);    // Manda para o modo Managed
+        this.em.remove(categoria);      // Precisa estar no modo Managed
+    }
 }
