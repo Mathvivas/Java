@@ -2,6 +2,7 @@ package br.maua.loja.modelo;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity        // Tabela do banco de dados está representando esta classe
 @Table(name = "produtos")
@@ -14,6 +15,9 @@ public class Produto {
     private String nome;
     private String descricao;
     private BigDecimal preco;
+    private LocalDate dataCadastro = LocalDate.now();
+    @Enumerated(EnumType.STRING)    // Cadastra o nome do ENUM no banco de dados
+    private Categoria categoria;
 
     public Long getId() {
         return id;
@@ -45,5 +49,17 @@ public class Produto {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public LocalDate getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
