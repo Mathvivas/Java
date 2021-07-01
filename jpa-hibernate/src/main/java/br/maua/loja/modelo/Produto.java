@@ -19,6 +19,15 @@ public class Produto {
     @ManyToOne  // Muitos produtos estã vinculados com uma categoria
     private Categoria categoria;
 
+    public Produto() {}
+
+    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.categoria = categoria;
+    }
+
     public Long getId() {
         return id;
     }

@@ -1,7 +1,7 @@
 package br.maua.loja.dao;
 
 import br.maua.loja.modelo.Pedido;
-import br.maua.loja.modelo.Produto;
+import br.maua.loja.vo.RelatorioDeVendasVo;
 
 import javax.persistence.EntityManager;
 import java.math.BigDecimal;
@@ -17,5 +17,24 @@ public class PedidoDAO {
 
     public void cadastrar(Pedido pedido) {
         this.em.persist(pedido);
+    }
+
+    public BigDecimal valorTotalVendido() {
+        String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p";
+        return em.createQuery(jpql, BigDecimal.class)
+                .getSingleResult();
+    }
+
+    public List<RelatorioDeVendasVo> relatorioDeVendas() {
+        String jpql = "SELECT new br.maua.loja.vo.RelatorioDeVendasVo("
+                + "produto.nome, "
+                + "SUM(item.quantidade), "
+                + "MAX(pedido.data)) "
+                + "FROM Pedido pedido "
+                + "JOIN pedido.itens item "
+                + "JOIN item.produto produto "
+                + "GROUP BY produto.nome "
+                + "ORDER BY item.quantidade DESC";
+        return em.createQuery(jpql, RelatorioDeVendasVo.class).getResultList();
     }
 }

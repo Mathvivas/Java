@@ -13,11 +13,15 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "valor_total")
-    private BigDecimal valorTotal;
+    private BigDecimal valorTotal = BigDecimal.ZERO;
+
     private LocalDate data = LocalDate.now();
+
     @ManyToOne  // Muitos pedidos estã vinculados com um cliente
     private Cliente cliente;
+
     // mappedBy indica um relacionamento bidirecional
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens = new ArrayList<>();
@@ -31,6 +35,7 @@ public class Pedido {
     public void adicionarItem(ItemPedido item) {
         item.setPedido(this);
         this.itens.add(item);
+        this.valorTotal = this.valorTotal.add(item.getValor());
     }
 
     public Long getId() {
