@@ -16,7 +16,7 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
     private LocalDate dataCadastro = LocalDate.now();
-    @ManyToOne  // Muitos produtos estã vinculados com uma categoria
+    @ManyToOne(fetch = FetchType.LAZY)  // Muitos produtos estã vinculados com uma categoria
     private Categoria categoria;
 
     public Produto() {}

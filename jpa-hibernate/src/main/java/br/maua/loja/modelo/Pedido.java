@@ -19,7 +19,7 @@ public class Pedido {
 
     private LocalDate data = LocalDate.now();
 
-    @ManyToOne  // Muitos pedidos estã vinculados com um cliente
+    @ManyToOne(fetch = FetchType.LAZY)  // Muitos pedidos estã vinculados com um cliente
     private Cliente cliente;
 
     // mappedBy indica um relacionamento bidirecional
