@@ -13,12 +13,13 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "valor_total")
     private BigDecimal valorTotal;
     private LocalDate data = LocalDate.now();
     @ManyToOne  // Muitos pedidos estã vinculados com um cliente
     private Cliente cliente;
     // mappedBy indica um relacionamento bidirecional
-    @OneToMany(mappedBy = "pedido")     // Se conecta com o relacionamento da classe ItemPedido
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens = new ArrayList<>();
 
     public Pedido() {}
