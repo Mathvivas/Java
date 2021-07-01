@@ -16,7 +16,7 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
     private LocalDate dataCadastro = LocalDate.now();
-    @Enumerated(EnumType.STRING)    // Cadastra o nome do ENUM no banco de dados
+    @ManyToOne  // Muitos produtos estã vinculados com uma categoria
     private Categoria categoria;
 
     public Long getId() {
