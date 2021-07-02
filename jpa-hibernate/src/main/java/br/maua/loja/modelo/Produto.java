@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 @Entity        // Tabela do banco de dados está representando esta classe
 @Table(name = "produtos")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Produto {
 
     @Id
