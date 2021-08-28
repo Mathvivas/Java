@@ -1,23 +1,52 @@
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
+
 import static org.apache.zookeeper.Watcher.Event.EventType.None;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 public class EleicaoDeLider {
 
     private static final String HOST = "localhost";
     private static final String PORT = "2181";
     private static final int TIMEOUT = 5000;
-
+    private static final String NAMESPACE_ELEICAO = "/eleicao";
+    private String nomeDoZNodeDesseProcesso;
     private ZooKeeper zooKeeper;
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
         System.out.println("Tratando Main: " + Thread.currentThread().getName());
         EleicaoDeLider eleicaoDeLider = new EleicaoDeLider();
         eleicaoDeLider.conectar();
+        eleicaoDeLider.realizarCandidatura();
+        eleicaoDeLider.elegerOLider();
         eleicaoDeLider.executar();
         eleicaoDeLider.fechar();
+    }
+
+    public void realizarCandidatura() throws InterruptedException, KeeperException {
+        String prefixo = String.format("%s/cand_", NAMESPACE_ELEICAO);
+        String pathInteiro = zooKeeper.create(prefixo, new byte[]{},
+                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        this.nomeDoZNodeDesseProcesso =
+                pathInteiro.replace(String.format("%s/", NAMESPACE_ELEICAO), "");
+        System.out.println(this.nomeDoZNodeDesseProcesso);
+    }
+
+    public void elegerOLider() throws InterruptedException, KeeperException {
+        // Obter a lista de filhos do ZNode /eleicao (usar o zooKeeper)
+        List<String> filhos =  zooKeeper.getChildren(NAMESPACE_ELEICAO, false);
+        // Ordenar a lista de filhos
+        Collections.sort(filhos);
+        // Verificar se o primeiro da lista é igual ao atual nomeDoZNodeDesseProcesso
+        // Se for, declarar-se líder. Caso contrário, dizer quem é o líder
+        String lider = filhos.get(0);
+        if ( lider.equals(nomeDoZNodeDesseProcesso) ) {
+            System.out.printf("Me chamo %s e sou o líder.", nomeDoZNodeDesseProcesso);
+        } else {
+            System.out.printf("Não sou o líder, O líder é o %s.\n", lider);
+        }
     }
 
     public void executar() throws InterruptedException {
