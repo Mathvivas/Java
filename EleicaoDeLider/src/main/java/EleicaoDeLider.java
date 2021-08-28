@@ -1,4 +1,5 @@
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.data.Stat;
 
 import static org.apache.zookeeper.Watcher.Event.EventType.None;
 
@@ -12,6 +13,7 @@ public class EleicaoDeLider {
     private static final String PORT = "2181";
     private static final int TIMEOUT = 5000;
     private static final String NAMESPACE_ELEICAO = "/eleicao";
+    private static final String ZNODE_TESTE_WATCH = "/teste_watcher";
     private String nomeDoZNodeDesseProcesso;
     private ZooKeeper zooKeeper;
 
@@ -21,8 +23,33 @@ public class EleicaoDeLider {
         eleicaoDeLider.conectar();
         eleicaoDeLider.realizarCandidatura();
         eleicaoDeLider.elegerOLider();
+        eleicaoDeLider.registrarWatcher();
         eleicaoDeLider.executar();
         eleicaoDeLider.fechar();
+    }
+
+    private class TesteWatcher implements Watcher {
+        @Override
+        public void process(WatchedEvent watchedEvent) {
+            System.out.println(watchedEvent);
+            switch (watchedEvent.getType()) {
+                case NodeCreated:
+                    System.out.println("ZNode Criado");
+                    break;
+                case NodeDeleted:
+                    System.out.println("ZNode Removido");
+                    break;
+            }
+        }
+    }
+
+    public void registrarWatcher() throws InterruptedException, KeeperException {
+        TesteWatcher watcher = new TesteWatcher();
+        Stat stat = zooKeeper.exists(ZNODE_TESTE_WATCH, watcher);
+        // znode existe
+        if ( stat != null ) {
+
+        }
     }
 
     public void realizarCandidatura() throws InterruptedException, KeeperException {
