@@ -23,43 +23,24 @@ public class EleicaoDeLider {
         eleicaoDeLider.conectar();
         eleicaoDeLider.realizarCandidatura();
         eleicaoDeLider.elegerOLider();
-        eleicaoDeLider.registrarWatcher();
+        //eleicaoDeLider.registrarWatcher();
         eleicaoDeLider.executar();
         eleicaoDeLider.fechar();
     }
 
-    private class TesteWatcher implements Watcher {
-        @Override
-        public void process(WatchedEvent watchedEvent) {
-            System.out.println(watchedEvent);
-            switch (watchedEvent.getType()) {
-                case NodeCreated:
-                    System.out.println("ZNode Criado");
-                    break;
+    // Expressão Lambda
+    private Watcher reeleicaoWatcher = (evento) -> {
+        try {
+            switch(evento.getType()) {
                 case NodeDeleted:
-                    System.out.println("ZNode Removido");
+                    // Líder inoperante
+                    // Nova eleição
                     break;
             }
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-    }
-
-    public void registrarWatcher() throws InterruptedException, KeeperException {
-        TesteWatcher watcher = new TesteWatcher();
-        Stat stat = zooKeeper.exists(ZNODE_TESTE_WATCH, watcher);
-        // znode existe
-        if ( stat != null ) {
-
-        }
-    }
-
-    public void realizarCandidatura() throws InterruptedException, KeeperException {
-        String prefixo = String.format("%s/cand_", NAMESPACE_ELEICAO);
-        String pathInteiro = zooKeeper.create(prefixo, new byte[]{},
-                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
-        this.nomeDoZNodeDesseProcesso =
-                pathInteiro.replace(String.format("%s/", NAMESPACE_ELEICAO), "");
-        System.out.println(this.nomeDoZNodeDesseProcesso);
-    }
+    };
 
     public void elegerOLider() throws InterruptedException, KeeperException {
         // Obter a lista de filhos do ZNode /eleicao (usar o zooKeeper)
@@ -106,4 +87,96 @@ public class EleicaoDeLider {
                 }
         );
     }
+
+    public void realizarCandidatura() throws InterruptedException, KeeperException {
+        String prefixo = String.format("%s/cand_", NAMESPACE_ELEICAO);
+        String pathInteiro = zooKeeper.create(prefixo, new byte[]{},
+                ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
+        this.nomeDoZNodeDesseProcesso =
+                pathInteiro.replace(String.format("%s/", NAMESPACE_ELEICAO), "");
+        System.out.println(this.nomeDoZNodeDesseProcesso);
+    }
+
+//    private class TesteWatcher implements Watcher {
+//
+//        @Override
+//        public void process(WatchedEvent watchedEvent) {
+//            System.out.println(watchedEvent);
+//
+//            try {
+//                switch(watchedEvent.getType()) {
+//                    case NodeCreated:
+//                        System.out.println("Znode Criado");
+//                        break;
+//                    case NodeDeleted:
+//                        System.out.println("Znode Removido");
+//                        break;
+//                    case NodeDataChanged:
+//                        System.out.println("Dados do ZNode Alterados");
+//                        Stat stat = zooKeeper.exists(ZNODE_TESTE_WATCH, false);
+//                        byte[] bytes = zooKeeper.getData(ZNODE_TESTE_WATCH, false, stat);
+//                        String dados = bytes != null ? new String(bytes) : "";
+//                        System.out.println("Dados: " + dados);
+//                        break;
+//                    case NodeChildrenChanged:
+//                        System.out.println("Não deveria acontecer! Filhos Alterados");
+//                        break;
+//                }
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+//
+//    public void registrarWatcher() {
+//        TesteWatcher watcher = new TesteWatcher();
+//
+//        try {
+//            zooKeeper.addWatch(ZNODE_TESTE_WATCH, watcher, AddWatchMode.PERSISTENT_RECURSIVE);
+//        } catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+    //    private class TesteWatcher implements Watcher {
+//        @Override
+//        public void process(WatchedEvent watchedEvent) {
+//            System.out.println(watchedEvent);
+//            switch (watchedEvent.getType()) {
+//                case NodeCreated:
+//                    System.out.println("ZNode Criado");
+//                    break;
+//                case NodeDeleted:
+//                    System.out.println("ZNode Removido");
+//                    break;
+//                case NodeDataChanged:
+//                    System.out.println("Dados do ZNode Alterados");
+//                    break;
+//                case NodeChildrenChanged:
+//                    System.out.println("Evento envolvendo os filhos");
+//                    break;
+//            }
+//            try {
+//                registrarWatcher();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            } catch (KeeperException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+//
+//    public void registrarWatcher() throws InterruptedException, KeeperException {
+//        TesteWatcher watcher = new TesteWatcher();
+//        Stat stat = zooKeeper.exists(ZNODE_TESTE_WATCH, watcher);
+//        // znode existe
+//        if ( stat != null ) {
+//            byte[] bytes = zooKeeper.getData(ZNODE_TESTE_WATCH, watcher, stat);
+//            String dados = bytes != null ? new String(bytes) : "";
+//            System.out.printf("Dados: %s\n", dados);
+//            List<String> filhos = zooKeeper.getChildren(ZNODE_TESTE_WATCH, watcher);
+//            System.out.println("Filhos: " + filhos);
+//        }
+//    }
 }
