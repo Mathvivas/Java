@@ -22,7 +22,8 @@ public class EleicaoDeLider {
         EleicaoDeLider eleicaoDeLider = new EleicaoDeLider();
         eleicaoDeLider.conectar();
         eleicaoDeLider.realizarCandidatura();
-        eleicaoDeLider.elegerOLider();
+        eleicaoDeLider.eleicaoEReeleicao();
+        //eleicaoDeLider.elegerOLider();
         //eleicaoDeLider.registrarWatcher();
         eleicaoDeLider.executar();
         eleicaoDeLider.fechar();
@@ -35,12 +36,35 @@ public class EleicaoDeLider {
                 case NodeDeleted:
                     // Líder inoperante
                     // Nova eleição
+                    eleicaoEReeleicao();
                     break;
             }
         } catch(Exception e) {
             e.printStackTrace();
         }
     };
+
+    public void eleicaoEReeleicao() throws InterruptedException, KeeperException {
+        Stat statPredecessor = null;
+        String nomePredecessor = "";
+        do {
+            List<String> candidatos = zooKeeper.getChildren(NAMESPACE_ELEICAO, false);
+            Collections.sort(candidatos);
+            String oMenor = candidatos.get(0);
+            if ( oMenor.equals(nomeDoZNodeDesseProcesso) ) {
+                System.out.printf("Me chamo %s e sou o Líder.\n", nomeDoZNodeDesseProcesso);
+                return;
+            }
+            System.out.printf("Me chamo %s e não sou o Líder. O Líder é o %s.\n", nomeDoZNodeDesseProcesso, oMenor);
+            int indicePredecessor = Collections.binarySearch(candidatos, nomeDoZNodeDesseProcesso) - 1;
+            nomePredecessor = candidatos.get(indicePredecessor);
+            statPredecessor = zooKeeper.exists(
+                    String.format("%s/%s", NAMESPACE_ELEICAO, nomePredecessor),
+                    reeleicaoWatcher
+            );
+        } while (statPredecessor == null);
+        System.out.printf("Estou observando o %s\n", nomePredecessor);
+    }
 
     public void elegerOLider() throws InterruptedException, KeeperException {
         // Obter a lista de filhos do ZNode /eleicao (usar o zooKeeper)
