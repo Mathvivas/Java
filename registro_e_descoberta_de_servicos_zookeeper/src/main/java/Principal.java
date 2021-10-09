@@ -44,9 +44,24 @@ public class Principal {
     }
 
     public static void main(String[] args) throws IOException, InterruptedException, KeeperException {
+        // executar "mvn clean package"
+        // java -jar aquivo.jar [o que for digitado será adc ao args]
+        int porta;
+
+        try {
+            porta = Integer.parseInt(args[0]);
+        }
+        catch (Exception e) {
+            porta = 10_000;
+        }
+
         Principal principal = new Principal();
         principal.conectar();
-        EleicaoDeLider eleicaoDeLider = new EleicaoDeLider(principal.zooKeeper);
+
+        RegistroDeServicos registroDeServicos = new RegistroDeServicos(principal.zooKeeper);
+        EleicaoCallback eleicaoCallback = new EleicaoCallbackImpl(registroDeServicos, porta);
+        EleicaoDeLider eleicaoDeLider = new EleicaoDeLider(principal.zooKeeper, eleicaoCallback);
+
         eleicaoDeLider.realizarCandidatura();
         eleicaoDeLider.eleicaoEReeleicao();
         principal.executar();

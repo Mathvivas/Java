@@ -1,6 +1,7 @@
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -47,6 +48,7 @@ public class RegistroDeServicos {
         synchronized (this) {
             List<String> znodes = zooKeeper.getChildren(REGISTRO_ZNODE,
                     registroDeServicosWatcher);
+            enderecos = new ArrayList<>();
             for ( String znode: znodes ) {
                 Stat stat = null;
                 if ( (stat = zooKeeper.exists(
