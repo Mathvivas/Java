@@ -33,7 +33,7 @@ public class MedicoController {
     // PAGINAÇÃO
     @GetMapping
     public Page<DadosListagemMedico> listar(@PageableDefault(size=10, sort={"nome"}) Pageable paginacao) {
-        return repository.findAll(paginacao).map(DadosListagemMedico::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedico::new);
     }
 
     @PutMapping
@@ -47,6 +47,8 @@ public class MedicoController {
     @Transactional
     // @PathVariable diz que esse id recebido é o mesmo id que vai na url /medicos/id
     public void excluir(@PathVariable Long id) {
-        repository.deleteById(id);
+        // Exclusão lógica
+        var medico = repository.getReferenceById(id);
+        medico.excluir();
     }
 }
