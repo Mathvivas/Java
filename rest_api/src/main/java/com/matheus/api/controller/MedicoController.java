@@ -20,7 +20,7 @@ public class MedicoController {
     private MedicoRepository repository;
 
     @PostMapping
-    @Transactional
+    @Transactional // Escrita no banco
     public void cadastrar(@RequestBody @Valid DadosCadastroMedico dados) {
         repository.save(new Medico(dados));
     }
@@ -41,5 +41,12 @@ public class MedicoController {
     public void atualizar(@RequestBody @Valid DadosAtualizacaoMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         medico.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    // @PathVariable diz que esse id recebido é o mesmo id que vai na url /medicos/id
+    public void excluir(@PathVariable Long id) {
+        repository.deleteById(id);
     }
 }
