@@ -1,6 +1,6 @@
-package com.matheus.api.medico;
+package com.matheus.api.domain.medico;
 
-import com.matheus.api.endereco.DadosEndereco;
+import com.matheus.api.domain.endereco.DadosEndereco;
 
 // A classe de Cadastro de Dados do Médico seria assim caso não existisse Record
 public class DadosCadastroMedicoClasse {

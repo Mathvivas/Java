@@ -1,6 +1,6 @@
-package com.matheus.api.paciente;
+package com.matheus.api.domain.paciente;
 
-import com.matheus.api.endereco.DadosEndereco;
+import com.matheus.api.domain.endereco.DadosEndereco;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosAtualizacaoPaciente(

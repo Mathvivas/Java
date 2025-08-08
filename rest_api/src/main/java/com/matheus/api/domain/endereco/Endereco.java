@@ -1,4 +1,4 @@
-package com.matheus.api.endereco;
+package com.matheus.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

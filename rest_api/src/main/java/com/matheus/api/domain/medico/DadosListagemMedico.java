@@ -1,4 +1,4 @@
-package com.matheus.api.medico;
+package com.matheus.api.domain.medico;
 
 // Criado para devolver somente algumas informações necessárias, não todas as informações do Médico
 public record DadosListagemMedico(Long id, String nome, String email, String crm, Especialidade especialidade) {

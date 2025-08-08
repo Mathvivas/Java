@@ -1,4 +1,4 @@
-package com.matheus.api.medico;
+package com.matheus.api.domain.medico;
 
 public enum Especialidade {
 

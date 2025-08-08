@@ -1,6 +1,6 @@
 package com.matheus.api.controller;
 
-import com.matheus.api.paciente.*;
+import com.matheus.api.domain.paciente.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

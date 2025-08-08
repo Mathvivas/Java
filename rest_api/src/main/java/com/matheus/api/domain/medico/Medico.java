@@ -1,6 +1,6 @@
-package com.matheus.api.medico;
+package com.matheus.api.domain.medico;
 
-import com.matheus.api.endereco.Endereco;
+import com.matheus.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

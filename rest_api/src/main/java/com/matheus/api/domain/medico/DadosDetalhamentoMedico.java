@@ -1,6 +1,6 @@
-package com.matheus.api.medico;
+package com.matheus.api.domain.medico;
 
-import com.matheus.api.endereco.Endereco;
+import com.matheus.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoMedico(Long id, String nome, String email, String crm, String telefone,
                                       Especialidade especialidade, Endereco endereco) {

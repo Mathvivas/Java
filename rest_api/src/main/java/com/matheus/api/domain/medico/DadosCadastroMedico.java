@@ -1,6 +1,6 @@
-package com.matheus.api.medico;
+package com.matheus.api.domain.medico;
 
-import com.matheus.api.endereco.DadosEndereco;
+import com.matheus.api.domain.endereco.DadosEndereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

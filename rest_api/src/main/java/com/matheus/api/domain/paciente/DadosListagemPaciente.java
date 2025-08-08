@@ -1,4 +1,4 @@
-package com.matheus.api.paciente;
+package com.matheus.api.domain.paciente;
 
 public record DadosListagemPaciente(Long id, String nome, String email, String cpf) {
 

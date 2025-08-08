@@ -1,6 +1,6 @@
-package com.matheus.api.paciente;
+package com.matheus.api.domain.paciente;
 
-import com.matheus.api.endereco.Endereco;
+import com.matheus.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
