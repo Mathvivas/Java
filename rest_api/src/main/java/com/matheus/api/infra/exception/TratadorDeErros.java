@@ -1,4 +1,4 @@
-package com.matheus.api.infra;
+package com.matheus.api.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;
