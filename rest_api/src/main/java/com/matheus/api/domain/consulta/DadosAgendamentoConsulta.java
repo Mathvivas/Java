@@ -1,5 +1,6 @@
 package com.matheus.api.domain.consulta;
 
+import com.matheus.api.domain.medico.Especialidade;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,5 +15,7 @@ public record DadosAgendamentoConsulta(
 
         @NotNull
         @Future // datas somente no futuro
-        LocalDateTime data
+        LocalDateTime data,
+
+        Especialidade especialidade
 ) {}
