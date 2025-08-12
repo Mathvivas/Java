@@ -11,12 +11,13 @@ import java.time.LocalDateTime;
 
 // <Tipo da entidade que este repository vai trabalhar, tipo do atributo da chave primária dessa entidade>
 public interface MedicoRepository extends JpaRepository<Medico, Long> {
+
     Page<Medico> findAllByAtivoTrue(Pageable paginacao);
 
     @Query("""
             SELECT m FROM Medico m
             WHERE
-            m.ativo = 1
+            m.ativo = true
             AND
             m.especialidade = :especialidade
             AND
