@@ -1,7 +1,8 @@
 package com.matheus.api.domain.consulta;
 
 import com.matheus.api.domain.ValidacaoException;
-import com.matheus.api.domain.consulta.validacoes.ValidadorAgendamentoDeConsulta;
+import com.matheus.api.domain.consulta.validacoes.agendamento.ValidadorAgendamentoDeConsulta;
+import com.matheus.api.domain.consulta.validacoes.cancelamento.ValidadorCancelamentoDeConsulta;
 import com.matheus.api.domain.medico.Medico;
 import com.matheus.api.domain.medico.MedicoRepository;
 import com.matheus.api.domain.paciente.PacienteRepository;
@@ -25,6 +26,9 @@ public class AgendaDeConsultas {
     @Autowired
     // Todas as classes que implementam essa Interface são colocadas na lista
     private List<ValidadorAgendamentoDeConsulta> validadores;
+
+    @Autowired
+    private List<ValidadorCancelamentoDeConsulta> validadoresCancelamento;
 
     public DadosDetalhamentoConsulta agendar(DadosAgendamentoConsulta dados) {
 
@@ -68,6 +72,8 @@ public class AgendaDeConsultas {
         if (!consultaRepository.existsById(dados.idConsulta())) {
             throw new ValidacaoException("ID da consulta informado não existe!");
         }
+
+        validadoresCancelamento.forEach(v -> v.validar(dados));
 
         var consulta = consultaRepository.getReferenceById(dados.idConsulta());
         consulta.cancelar(dados.motivo());

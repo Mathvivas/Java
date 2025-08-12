@@ -1,4 +1,4 @@
-package com.matheus.api.domain.consulta.validacoes;
+package com.matheus.api.domain.consulta.validacoes.agendamento;
 
 import com.matheus.api.domain.ValidacaoException;
 import com.matheus.api.domain.consulta.DadosAgendamentoConsulta;
