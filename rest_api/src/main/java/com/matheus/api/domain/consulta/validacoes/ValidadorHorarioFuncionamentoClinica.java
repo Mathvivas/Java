@@ -2,10 +2,12 @@ package com.matheus.api.domain.consulta.validacoes;
 
 import com.matheus.api.domain.ValidacaoException;
 import com.matheus.api.domain.consulta.DadosAgendamentoConsulta;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
-public class ValidadorHorarioFuncionamentoClinica {
+@Component
+public class ValidadorHorarioFuncionamentoClinica implements ValidadorAgendamentoDeConsulta {
 
     public void validar(DadosAgendamentoConsulta dados) {
         // Horário de funcionamento: Seg-Sab 7h-19h

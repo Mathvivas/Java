@@ -3,9 +3,13 @@ package com.matheus.api.domain.consulta.validacoes;
 import com.matheus.api.domain.ValidacaoException;
 import com.matheus.api.domain.consulta.ConsultaRepository;
 import com.matheus.api.domain.consulta.DadosAgendamentoConsulta;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class ValidadorMedicoComOutraConsultaNoMesmoHorario {
+@Component
+public class ValidadorMedicoComOutraConsultaNoMesmoHorario implements ValidadorAgendamentoDeConsulta {
 
+    @Autowired
     private ConsultaRepository repository;
 
     public void validar(DadosAgendamentoConsulta dados) {
