@@ -39,7 +39,7 @@ class MedicoControllerTest {
     private MedicoRepository repository;
 
     @Test
-    @DisplayName("Deveria devolver código HTTP 400 quando informações estão inválidas")
+    @DisplayName("Deveria devolver codigo HTTP 400 quando informacoes estao invalidas")
     @WithMockUser
     void cadastrarCenario1() throws Exception {
         var response = mvc
@@ -51,7 +51,7 @@ class MedicoControllerTest {
     }
 
     @Test
-    @DisplayName("Deveria devolver código HTTP 201 quando informações estão válidas")
+    @DisplayName("Deveria devolver codigo HTTP 201 quando informacoes estao validas")
     @WithMockUser
     void cadastrarCenario2() throws Exception {
         var dadosCadastro = new DadosCadastroMedico(

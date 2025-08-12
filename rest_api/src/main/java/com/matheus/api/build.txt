@@ -1,0 +1,11 @@
+- Clicar na aba do Maven e clicar com o botão direito e rodar "Run Maven Build" -> gera o .jar
+- Pode ser rodado "mvn clean package" no terminal como uma alternativa
+- Comentários precisam estar sem acento
+
+## No TERMINAL
+
+// Passa o application.properties de prod
+java -Dspring.profile.active=prod -jar target/rest_api-0.0.1-SNAPSHOT.jar
+
+// Definir as variáveis
+java -Dspring.profile.active=prod -DDATASOURCE_URL=jdbc:mysql://localhost/rest_api -DDATASOURCE_USERNAME=root -DDATASOURCE_PASSWORD=root -jar target/rest_api-0.0.1-SNAPSHOT.jar
