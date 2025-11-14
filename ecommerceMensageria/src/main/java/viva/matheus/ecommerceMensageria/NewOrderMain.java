@@ -1,5 +1,6 @@
 package viva.matheus.ecommerceMensageria;
 
+import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -13,17 +14,21 @@ public class NewOrderMain {
     public static void main(String[] args) {
         try (var producer = new KafkaProducer<String, String>(properties())) {
             // mensagem mandada, id do pedido, id do usuário e valor da compra
-            var value = "132123,67384,3423";
+            var value = "283740,573629,102";
             var record = new ProducerRecord<>("ECOMMERCE_NEW_ORDER", value, value);
             // send é assíncrono, para esperar, usar .get()
-            producer.send(record, (data, exception) -> {
+            Callback callback = (data, exception) -> {
                 if (exception != null) {
                     exception.printStackTrace();
                     return;
                 }
                 System.out.println("sucesso, enviando " + data.topic() + ":::partition " + data.partition() + "/ offset " +
                         data.offset() + "/ timestamp " + data.timestamp());
-            }).get();
+            };
+            var email = "Thank you! We are processing your order!";
+            var emailRecord = new ProducerRecord<>("ECOMMERCE_SEND_EMAIL", email, email);
+            producer.send(record, callback).get();
+            producer.send(emailRecord, callback).get();
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
