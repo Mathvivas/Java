@@ -36,3 +36,8 @@ docker exec --workdir /opt/kafka/bin/ -it broker sh
 
  - PARTIÇÕES: Se o FraudDetectorService for divido em dois, um ficará encarregado de uma partição e
  outro ficará com outra partição. A chave determina qual partição será utilizada.
+
+- Modificar os arquivos de salvamento de dados de temporário para permanente
+config/server.properties
+tmp/kafka-logs ---> User/.../data/kafka
+- Rodar a nova configuração: bin/kafka-server-start.sh config/server.properties
