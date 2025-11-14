@@ -1,3 +1,6 @@
+- Comandos do Docker Kafka
+https://hub.docker.com/r/apache/kafka
+
 - Rodar o container
 docker run -d \
         --name broker \
@@ -16,6 +19,9 @@ ou
 
 docker run -d --name broker -p 9092:9092 apache/kafka:4.1.0
 
+- Entrar no container
+docker exec --workdir /opt/kafka/bin/ -it broker sh
+
 - Produtor
 ./kafka-console-producer.sh --bootstrap-server localhost:9092 -
 -topic ECOMMERCE_NEW_ORDER
@@ -24,5 +30,9 @@ docker run -d --name broker -p 9092:9092 apache/kafka:4.1.0
 ./kafka-console-consumer.sh --bootstrap-server localhost:9092 -
  -topic ECOMMERCE_NEW_ORDER --from-beginning
 
-- Comandos do Docker Kafka
-https://hub.docker.com/r/apache/kafka
+ - Alteração do número de partições
+ ./kafka-topics.sh --alter --bootstrap-server localhost:9092 --t
+ opic ECOMMERCE_NEW_ORDER --partitions 3
+
+ - PARTIÇÕES: Se o FraudDetectorService for divido em dois, um ficará encarregado de uma partição e
+ outro ficará com outra partição. A chave determina qual partição será utilizada.
