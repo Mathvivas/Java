@@ -1,6 +1,6 @@
 services:
   kafka:
-    image: apache/kafka:3.8.0
+    image: apache/kafka:latest
     ports:
       - "9092:9092"
     environment:
@@ -26,3 +26,12 @@ services:
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
     depends_on:
       - kafka
+
+  postgres:
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=socialmedia'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=user'
+    ports:
+      - '5455:5432'
